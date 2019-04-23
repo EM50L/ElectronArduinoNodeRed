@@ -1,0 +1,1 @@
+Versiones Precompiladas de ElectronArduinoNodeRed.
