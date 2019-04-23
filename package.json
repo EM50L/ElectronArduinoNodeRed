@@ -1,0 +1,49 @@
+{
+  "name": "electron-node-red-Arduino",
+  "version": "1.1.1",
+  "description": "Electron Node-RED Arduino starter",
+  "main": "main.js",
+  "flows": "flows.json",
+  "scripts": {
+    "start": "electron .",
+    "install": "electron-rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:EM50L/electron-node-red_Jejo.git"
+  },
+  "keywords": [
+    "Electron",
+    "node-red",
+    "serial",
+    "arduino",
+    "demo"
+  ],
+  "author": "Jejo(Em50L)",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^4.1.0",
+    "electron-rebuild": "^1.8.4"
+  },
+  "dependencies": {
+    "data-table": "^2.0.0",
+    "express": "*",
+    "firmata": "^0.21.0",
+    "johnny-five": "^0.15.0",
+    "node-red": "*",
+    "node-red-configurable-ping": "1.0.1",
+    "node-red-contrib-advanced-ping": "^1.2.0",
+    "node-red-contrib-alexa-local": "0.3.24",
+    "node-red-contrib-gpio": "^0.14.0",
+    "node-red-contrib-modbustcp": "^1.2.3",
+    "node-red-contrib-modbustcp-no-pooling": "^0.1.7",
+    "node-red-contrib-string": "^0.2.2",
+    "node-red-contrib-telegrambot": "5.3.0",
+    "node-red-dashboard": "^2.14.0",
+    "node-red-node-arduino": "0.0.18",
+    "node-red-node-openweathermap": "^0.2.1",
+    "node-red-node-serialport": "0.6.6",
+    "node-red-node-wol": "0.0.10",
+    "serialport": "^6.2.1"
+  }
+}
