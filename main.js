@@ -1,69 +1,52 @@
 'use strict';
 
-console.log()
-console.log("Estamos usando node "+process.versions.node )
+//Depuracion
+console.log("Estamos usando" )
+console.log("Node "+process.versions.node )
 console.log("Chrome "+process.versions.chrome)
-console.log("y Electron "+process.versions.electron)
+console.log("Electron "+process.versions.electron)
 console.log("Serialport "+require('serialport/package').version)
 console.log("process.argv[1]="+process.argv[1] )
 
-console.log(process.execPath)
-const path2 = require('path');
-const nodejejo = path2.resolve(process.execPath, '..');
-console.log("nodejejo:"+nodejejo)
-console.log("__dirname:"+__dirname)
-console.log("Estas ejecutando main.js Linea15");
+// Algunas configuraciones para editarlas facilmente
+const url        	 = "/ui";		// Start on the dashboard page
+const urledit  	 = "/admin";	// url editor 
+const listenPort = "1880"; 	//80  Puerto tcp
 
-// Some settings you can edit easily
-// Flows file name
-const flowfile = 'flows.json';
-// Start on the dashboard page
-const url = "/admin";
-// url for the editor page
-const urledit = "/admin";
-// tcp port to use
-//const listenPort = "80"; // fix it just because
-const listenPort = "1880"; // fix it just because
-//const listenPort = parseInt(Math.random()*16383+49152) // or random ephemeral port
-
-console.log("Estas ejecutando main.js Linea29");
-
-const os = require('os');
-const electron = require('electron');
-const app = electron.app;
+const os 		 = require('os');
+const electron 	 = require('electron');
+const app 	 = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-//const dialog = require('electron')
 const {Menu, MenuItem, dialog} = electron;
 
-// this should be placed at top of main.js to handle squirrel setup events quickly
-if (handleSquirrelEvent()) { return; }
+console.log("Estas ejecutando main.js Linea22");
 
-console.log("Estas ejecutando main.js Linea40");
+console.log("\nProblema con el directorio a utilizar...");
+var userdir;
+const path2 = require('path');
+userdir = path2.resolve(process.execPath, '..');; //__dirname; 
+console.log("process.execPath "+process.execPath)
+console.log("__dirname:"+__dirname)
+console.log("Directorio UserDir:",userdir);
+console.log();
 
-var http = require('http');
-var express = require("express");
-var RED = require("node-red");
+//_______________________________________________________________________________________________________
+// Codigo de https://nodered.org/docs/embedding
+console.log("cargo node-red https://nodered.org/docs/embedding");
+var http 		= require('http');
+var express 	= require("express");
+var RED		= require("node-red");
+var red_app 	= express();// Crea Express app
 
-// Create an Express app
-var red_app = express();
-
-
-console.log("Estas ejecutando main.js Linea37");
-
-// Add a simple route for static content served from 'public'
-//red_app.use("/",express.static("public"));
+console.log("Estas ejecutando main.js Linea 40");
 
 // Create a server
 var server = http.createServer(red_app);
 
 console.log("Estas ejecutando main.js Linea45");
 
-var userdir;
-userdir = __dirname;
-//var path3 = require('path');
-//userdir  = path3.resolve(process.execPath, '..');
-userdir = nodejejo;
-console.log("Directorio UserDir:",userdir);
+// Add a simple route for static content served from 'public'
+red_app.use("/",express.static("public"));
 
 // Create the settings object - see default settings.js file for other options
 var settings = {
@@ -71,33 +54,32 @@ var settings = {
     httpAdminRoot:"/admin",
     httpNodeRoot: "/",
     userDir: userdir,
-    flowFile: flowfile,
+    flowFile: 'flows.json',
     functionGlobalContext: { }    // enables global context
 };
 
-// Initialise the runtime with a server and settings
-RED.init(server,settings);
-
-console.log("Estas ejecutando main.js Linea78");
+console.log("Inicializa node-red RED.init()");
+RED.init(server,settings);// Inicializa runtime node-red 
+console.log("Estas ejecutando main.js Linea60");
 
 // Serve the editor UI from /red
 red_app.use(settings.httpAdminRoot,RED.httpAdmin);
-
-console.log("Estas ejecutando main.js Linea83");
-
 // Serve the http nodes UI from /api
 red_app.use(settings.httpNodeRoot,RED.httpNode);
 
-console.log("Estas ejecutando main.js Linea88");
+// esto se implementa de otra manera
+server.listen(listenPort);
 
-// Create the Application's main menu (https://www.christianengvall.se/electron-menu/)
+// Start the runtime
+//RED.start();//problema no carga la pagina añado evento then 
+RED.start().then(function() {
+     console.log("\n\nServidor accesible desde: http://127.0.0.1:"+listenPort+url+"\n\n");
+     win.loadURL("http://127.0.0.1:"+listenPort+url);//"/ui/");
+}); 
+// Fin Codigo de https://nodered.org/docs/embedding
+
+// intento de utilizar localtunel para sacar el node-red fuera...
 //var localtunnel = require('localtunnel');
-var template = [{
-    label: "Applicacion",submenu: [{label:'Acerca de...',role:'about'},{type:"separator"},{label:'Salir',role:'quit' }]
-    },{
-    label: 'Node-RED',submenu: [
-        {label:'Dashboard',click(){mainWindow.loadURL("http://localhost:"+listenPort+"/ui/");}},//url);}},
-        {label:'Editar Codigo',click(){mainWindow.loadURL("http://localhost:"+listenPort+urledit);}},
 	/*{label:'Localtunnel on',click(){
 		var localtunnel = require('localtunnel');
 		var tunnel = localtunnel(listenPort,function(err, tunnel){
@@ -110,19 +92,33 @@ var template = [{
 			tunnel.on('error', function(error){console.log(error)});
 		}},
 	{label:'Localtunnel off ',click(){tunnel.close()}}/* */
-	
-    ]},{
-    label:'Ver',submenu: [
-        { label: 'Recargar',accelerator:'CmdOrCtrl+R',
-            click(item,focusedWindow){if (focusedWindow)focusedWindow.reload();}
-        },
-        { label: 'Barra Desarrollador',
-            click(item, focusedWindow){if(focusedWindow)focusedWindow.webContents.toggleDevTools(); }
-        },
-        { type: 'separator' },{ role: 'resetzoom' },{ role: 'zoomin' },{ role: 'zoomout' },
-        { type: 'separator' },{ role: 'togglefullscreen' },{ role: 'minimize' }
-	
-    ]}/*,{
+
+
+// Crea el menu 
+// Codigo https://www.christianengvall.se/electron-menu/)
+
+var template = [{
+	label: "Applicacion",submenu: [{label:'Acerca de...',role:'about'},{type:"separator"},{label:'Salir',role:'quit' }]
+    },{
+	label: 'Node-RED',submenu: [
+		{label:'Dashboard',click(){win.loadURL("http://localhost:"+listenPort+"/ui/");}},//url);}},
+		{label:'Editar Codigo',click(){win.loadURL("http://localhost:"+listenPort+urledit);}},
+	]
+    },{
+	label:'Ver',submenu: [
+		{label: 'Recargar',accelerator:'CmdOrCtrl+R',
+			click(item,focusedWindow){if (focusedWindow)focusedWindow.reload();}
+		},{ label: 'Barra Desarrollador',
+			click(item, focusedWindow){if(focusedWindow)focusedWindow.webContents.toggleDevTools(); }
+		},{ type: 'separator' 
+		},{ role: 'resetzoom' 
+		},{ role: 'zoomin' 
+		},{ role: 'zoomout' 
+		},{ type: 'separator' 
+		},{ role: 'togglefullscreen' 
+		},{ role: 'minimize' }
+	]
+    }/*,{
 	label:'Acerca de...',
 	click: function (item, focusedWindow) {dialog.showMessageBox({ message: "Jejo EM50L :-)",buttons: ["OK"] })}
 	}
@@ -140,161 +136,85 @@ var template = [{
 	}/* */
 ];
 const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
-console.log("Estas ejecutando main.js acabo de ejecutar:Menu.setApplicationMenu(menu)");
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let mainWindow;
+// otra forma posiblemente mas modular
+//var menu =new Menu()
+//https://github.com/electron/electron/blob/master/docs/api/menu.md
+//menu.append(new MenuItem({ label: 'MenuItem1', click() { console.log('item 1 clicked') } }))
+
+Menu.setApplicationMenu(menu)
+console.log("Estas ejecutando main.js 118 acabo de ejecutar:Menu.setApplicationMenu(menu)");
+
+//_______________________________________________________________________________________________________
+// Codigo de https://electronjs.org/docs/tutorial/first-app   
+
+// Mantén una referencia global del objeto window, si no lo haces, la ventana 
+// se cerrará automáticamente cuando el objeto JavaScript sea eliminado por el recolector de basura.
+let win;
 
 function createWindow() {
-	console.log("Estas ejecutando main.js funcion createWindow linea 133");
+	console.log("Estas ejecutando main.js funcion createWindow() linea 133");
 	//dialog.showMessageBox({ message: "Jejo EM50L :-)",buttons: ["OK"] });
 
-    // Create the browser window.
-    mainWindow = new BrowserWindow({
-        //autoHideMenuBar: true,
-	autoHideMenuBar: false,
-        webPreferences: {
-            nodeIntegration: false // sin esta linea no funciona el navegador en modo admin
-	    //nodeIntegration: true
-        },
-        title: "Node-RED-Jejo",
-        fullscreenable: true,
-        titleBarStyle: "hidden",
-        width: 1024,
-        height: 768,
-        icon: __dirname + "/nodered.png"
-    });
+	// Crea la ventana del navegador.
+	win = new BrowserWindow({
+		autoHideMenuBar: false,
+		webPreferences: {
+			nodeIntegration: false // sin esta linea no funciona el navegador en modo admin
+		//nodeIntegration: true
+		},
+		title: "Node-RED-Jejo",
+		fullscreenable: true,
+		titleBarStyle: "hidden",
+		width: 800,
+		height: 600,
+		icon: __dirname + "/nodered.png"
+	});
+	
+	// y cargue el index.html de su aplicación.
+	win.loadFile('index.html');
 
-    // Open the DevTools.
-    //mainWindow.webContents.openDevTools()
-    
-    var webContents = mainWindow.webContents;
-    webContents.on('did-get-response-details', function(event, status, newURL, originalURL, httpResponseCode) {
-        if ((httpResponseCode == 404) && (newURL == ("http://localhost:"+listenPort+url))) {
-            setTimeout(webContents.reload, 200);
-        }
-        Menu.setApplicationMenu(Menu.buildFromTemplate(template));
-    });
+	// Abre las herramientas de desarrollo (DevTools).
+	//win.webContents.openDevTools()
+	
+	// nuevas ventanas en cascada y mismo tamaño original
+	win.webContents.on("new-window", function(e, url, frameName, disposition, options) {
+		var w = win.getBounds();
+		options.x = w.x+15;	options.y = w.y+15;
+		options.width = w.width;options.height = w.height;
+	})
 
-    // Open the DevTools.
-    //mainWindow.webContents.openDevTools();
-
-    mainWindow.webContents.on("new-window", function(e, url, frameName, disposition, options) {
-        // if a child window opens... modify any other options such as width/height, etc
-        // in this case make the child overlap the parent exactly...
-        var w = mainWindow.getBounds();
-        options.x = w.x;
-        options.y = w.y;
-        options.width = w.width;
-        options.height = w.height;
-        //re-use the same child name so all "2nd" windows use the same one.
-        //frameName = "child";
-    })
-
-    // Emitted when the window is closed.
-    mainWindow.on('closed', function() {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
-        mainWindow = null;
-    });
+	// Emitido cuando la ventana es cerrada.
+	win.on('closed', function () {
+		// Elimina la referencia al objeto window, normalmente  guardarías las ventanas
+		// en un vector si tu aplicación soporta múltiples ventanas, este es el momento
+		// en el que deberías borrar el elemento correspondiente.
+		win = null;
+	});
 }
 
-// Called when Electron has finished initialization and is ready to create browser windows.
+// Este método será llamado cuando Electron haya terminado
+// la inicialización y esté listo para crear ventanas del navegador.
+// Algunas APIs pueden usarse sólo después de que este evento ocurra.
 app.on('ready', createWindow);
 
-// Quit when all windows are closed.
+// Sal cuando todas las ventanas hayan sido cerradas.
 app.on('window-all-closed', function () {
-    // On OS X it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
+  // En macOS es común para las aplicaciones y sus barras de menú
+  // que estén activas hasta que el usuario salga explicitamente con Cmd + Q
     //if (process.platform !== 'darwin') {
         app.quit();//creo que con esta linea cierro el proceso en segundo plano
     //}
 });
 
 app.on('activate', function() {
-    // On OS X it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (mainWindow === null) {
+  // En macOS es común volver a crear una ventana en la aplicación cuando el
+  // icono del dock es clicado y no hay otras ventanas abiertas.
+    if (win === null) {
         createWindow();
-        mainWindow.loadURL("http://127.0.0.1:"+listenPort+url);
+        win.loadURL("http://127.0.0.1:"+listenPort+url);
     }
 });
 
-// Start the Node-RED runtime, then load the inital page
-RED.start().then(function() {
-     console.log("Estas ejecutando main.js funcion RED.start().then(... linea 252");
-    //server.listen(listenPort,"127.0.0.1",function() {
-    server.listen(listenPort,"0.0.0.0",function() {// 0.0.0.0 para que escuche en todos los interfaces
-	console.log("Estas ejecutando main.js funcion Rserver.listen(,,function() {... linea 255");
-	console.log("Servidor accesible desde: http://127.0.0.1:"+listenPort+"/ui/");
-        //mainWindow.loadURL("http://127.0.0.1:"+listenPort+url);
-        mainWindow.loadURL("http://127.0.0.1:"+listenPort+"/ui/");
-    });
-});
-
-///////////////////////////////////////////////////////
-// All this Squirrel stuff is for the Windows installer
-function handleSquirrelEvent() {
-  if (process.argv.length === 1) {
-    return false;
-  }
-
-  const ChildProcess = require('child_process');
-  const path = require('path');
-
-  const appFolder = path.resolve(process.execPath, '..');
-  const rootAtomFolder = path.resolve(appFolder, '..');
-  const updateDotExe = path.resolve(path.join(rootAtomFolder, 'Update.exe'));
-  const exeName = path.basename(process.execPath);
-
-  const spawn = function(command, args) {
-    let spawnedProcess, error;
-
-    try {
-      spawnedProcess = ChildProcess.spawn(command, args, {detached: true});
-    } catch (error) {}
-
-    return spawnedProcess;
-  };
-
-  const spawnUpdate = function(args) {
-    return spawn(updateDotExe, args);
-  };
-
-  const squirrelEvent = process.argv[1];
-  switch (squirrelEvent) {
-    case '--squirrel-install':
-    case '--squirrel-updated':
-      // Optionally do things such as:
-      // - Add your .exe to the PATH
-      // - Write to the registry for things like file associations and
-      //   explorer context menus
-
-      // Install desktop and start menu shortcuts
-      spawnUpdate(['--createShortcut', exeName]);
-
-      setTimeout(app.quit, 1000);
-      return true;
-
-    case '--squirrel-uninstall':
-      // Undo anything you did in the --squirrel-install and
-      // --squirrel-updated handlers
-
-      // Remove desktop and start menu shortcuts
-      spawnUpdate(['--removeShortcut', exeName]);
-
-      setTimeout(app.quit, 1000);
-      return true;
-
-    case '--squirrel-obsolete':
-      // This is called on the outgoing version of your app before
-      // we update to the new version - it's the opposite of
-      // --squirrel-updated
-
-      app.quit();
-      return true;
-  }
-};
+// En este archivo puedes incluir el resto del código del proceso principal de
+// tu aplicación. También puedes ponerlos en archivos separados y requerirlos aquí.
