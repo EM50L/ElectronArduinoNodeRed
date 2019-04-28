@@ -83,11 +83,6 @@ epi
 
 ```
 
-Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).
-
-Use `Node-RED` command to run. Flows are stored in `~/.node-red`.
-
-
 ## License [CC0 (Public Domain)](LICENSE.md)
 
 ## Codigo de referencia / Reference Code (parts of code more explained)
