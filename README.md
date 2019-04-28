@@ -26,7 +26,6 @@ http://jejo.es
 - Linux Download Zip Unzip it an execute.
 
 
-
 ## Compilacion / Compile
 Aqui ha estado el trabajo duro. (muchas muchas pruebas)  
 El problema es que los modulos estan muy fragmentados y para el Serial hay que recompilar el electron completo (casi 15min) 
@@ -76,7 +75,7 @@ npm start
 ```
 # https://github.com/Urucas/electron-packager-interactive
 
-#Inatalat epi / Install epi
+#Instalar epi / Install epi
 npm install -g electron-packager-interactive
 
 # ejecutar / Run it
@@ -91,8 +90,14 @@ Use `Node-RED` command to run. Flows are stored in `~/.node-red`.
 
 ## License [CC0 (Public Domain)](LICENSE.md)
 
+## Codigo de referencia / Reference Code (parts of code more explained)
+ - **Node-RED Embedding into an existing app** https://nodered.org/docs/embedding
+ - **Electron First App** https://electronjs.org/docs/tutorial/first-app 
+ - **Electron Menus** https://www.christianengvall.se/electron-menu/ 
+ 
+
 ## Ver Tambien / See also
- - **Electron Node-RED Project which this project was forked from** - https://github.com/natcl/electron-node-red
+ - **Electron Node-RED Project which this project was inspired from** - https://github.com/natcl/electron-node-red
  - **Stand-alone Starter Project** - https://github.com/dceejay/node-red-project-starter
  - **mpm serial port** - https://www.npmjs.com/package/serialport
-- **node serial port** - https://serialport.io/
+ - **node serial port** - https://serialport.io/
