@@ -18,24 +18,26 @@ en solo 3 Nodos y sin programar nada. / in only 3 nodes whitout programming.
 http://jejo.es
 
 ## Instalacion 
-- Windows Descargar Zip descomprimir y ejecutar.
-- Linuz Descargar Zip descomprimir y ejecutar.
+- Windows Descargar Zip [ElectronArduinoNodeRed V1.0 .zip](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/V1.0/electron-node-red-Arduino-win32-ia32.zip)(77Mb) descomprimir y ejecutar.
+- Linuz Descargar 7z [ElectronArduinoNodeRed V1.0 .7z](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/V1.0/ElectronArduinoNodeRed-linux-x64.7z)(54Mb) descomprimir y ejecutar.
 
 ## Install
-- Windows Download Zip Unzip it an execute.
-- Linux Download Zip Unzip it an execute.
+- Windows Download Zip [ElectronArduinoNodeRed V1.0 .zip](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/V1.0/electron-node-red-Arduino-win32-ia32.zip) (77Mb) Unzip it an execute.
+- Linux Download 7z [ElectronArduinoNodeRed V1.0 .7z](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/V1.0/ElectronArduinoNodeRed-linux-x64.7z) (54Mb) extract it an execute.
 
-
+## [Releases / Versiones](https://github.com/EM50L/ElectronArduinoNodeRed/releases/) 
+## Mirror http://jejo.es
+ 
 ## Compilacion / Compile
 Aqui ha estado el trabajo duro. (muchas muchas pruebas)  
 El problema es que los modulos estan muy fragmentados y para el Serial hay que recompilar el electron completo (casi 15min) 
-Para colmo hay unas 136 versiones en npm del serialport 
+Para colmo hay unas 136 versiones en npm del serialport.
  (https://serialport.io/ https://www.npmjs.com/package/serialport)
  y no todas compilan bien con el resto de modulos,versiones etc...
  
  Pero dejandonos de rollos aqui dejo una secuencia de comandos con los que si compila.
+ **Ojo el orden es muy importante.** si hay algun fallo habra que resolverlo , borrar la carpeta node_modules y volver a empezar, para que todas las dependencias queden resueltas en orden.
  
-  
 ```bash
 # 1) Clonado del repositorio
 git clone https://github.com/EM50L/ElectronArduinoNodeRed.git
