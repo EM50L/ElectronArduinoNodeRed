@@ -78,22 +78,6 @@ RED.start().then(function() {
 }); 
 // Fin Codigo de https://nodered.org/docs/embedding
 
-// intento de utilizar localtunel para sacar el node-red fuera...
-//var localtunnel = require('localtunnel');
-	/*{label:'Localtunnel on',click(){
-		var localtunnel = require('localtunnel');
-		var tunnel = localtunnel(listenPort,function(err, tunnel){
-				if (err) {console.log(err)}
-				console.log(tunnel.url)
-				dialog.showMessageBox({message:"Servidor accesible desde:"+tunnel.url+"/ui/",buttons: ["OK"] })
-			});
-			tunnel.on('close', function(){console.log("tunnel cerrado")});
-			tunnel.on('request', function(info){console.log(info)});
-			tunnel.on('error', function(error){console.log(error)});
-		}},
-	{label:'Localtunnel off ',click(){tunnel.close()}}/* */
-
-
 // Crea el menu 
 // Codigo https://www.christianengvall.se/electron-menu/)
 
@@ -101,46 +85,24 @@ var template = [{
 	label: "Applicacion",submenu: [{label:'Acerca de...',role:'about'},{type:"separator"},{label:'Salir',role:'quit' }]
     },{
 	label: 'Node-RED',submenu: [
-		{label:'Dashboard',click(){win.loadURL("http://localhost:"+listenPort+"/ui/");}},//url);}},
-		{label:'Editar Codigo',click(){win.loadURL("http://localhost:"+listenPort+urledit);}},
-	]
+		{label:'Dashboard',click(){win.loadURL("http://localhost:"+listenPort+"/ui/");}},
+		{label:'Editar Codigo',click(){win.loadURL("http://localhost:"+listenPort+urledit);}},	]
     },{
 	label:'Ver',submenu: [
 		{label: 'Recargar',accelerator:'CmdOrCtrl+R',
 			click(item,focusedWindow){if (focusedWindow)focusedWindow.reload();}
 		},{ label: 'Barra Desarrollador',
 			click(item, focusedWindow){if(focusedWindow)focusedWindow.webContents.toggleDevTools(); }
-		},{ type: 'separator' 
-		},{ role: 'resetzoom' 
-		},{ role: 'zoomin' 
-		},{ role: 'zoomout' 
-		},{ type: 'separator' 
-		},{ role: 'togglefullscreen' 
-		},{ role: 'minimize' }
-	]
+		},{ type: 'separator' },{ role: 'resetzoom' 
+		},{ role: 'zoomin'    },{ role: 'zoomout' 
+		},{ type: 'separator' },{ role: 'togglefullscreen' 
+		},{ role: 'minimize' }	]
     }/*,{
 	label:'Acerca de...',
 	click: function (item, focusedWindow) {dialog.showMessageBox({ message: "Jejo EM50L :-)",buttons: ["OK"] })}
-	}
-    /*,{
-	label:'Acerca de...',
-	click: function (item, focusedWindow) {
-		if (focusedWindow) {
-			const options = {
-			type: 'info',title: 'Acerca de...',buttons: ['Ok'],
-			message: 'Demo de Electronjs + node-red + Arduino firmData por EM50L.'
-			}
-			console.log(require.resolve('dialog'))
-			dialog.showMessageBox(focusedWindow,options,function(){})
-		}}
 	}/* */
 ];
 const menu = Menu.buildFromTemplate(template)
-
-// otra forma posiblemente mas modular
-//var menu =new Menu()
-//https://github.com/electron/electron/blob/master/docs/api/menu.md
-//menu.append(new MenuItem({ label: 'MenuItem1', click() { console.log('item 1 clicked') } }))
 
 Menu.setApplicationMenu(menu)
 console.log("Estas ejecutando main.js 118 acabo de ejecutar:Menu.setApplicationMenu(menu)");
