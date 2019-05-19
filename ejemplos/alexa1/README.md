@@ -19,7 +19,7 @@ ______________________________________
 
 
 ## Necesitaras lo siguiente
-- Aplicacion  [ElectronArduinoNodeRed] ({{< ref "ElectronArduinoNodeRed" >}})
+- Aplicacion  ElectronArduinoNodeRed 
 - O tener instalado node red y los modulos indicados (node-red-contrib-wemo-emulator)
 - Un alexa operativo.
 - Todos los equipos visibles en la misma red wifi. (si no alexa no podra comunicarse)
@@ -81,7 +81,8 @@ Pagina del proyecto y el codigo.
 https://github.com/EM50L/ElectronArduinoNodeRed/   
 Releases / Versiones   
 https://github.com/EM50L/ElectronArduinoNodeRed/releases/   
-
+Articulo en la pagina personal del autor.  
+https://jejo.es/posts/osciloscopio_arduino/
  
  
  <!-- -->
