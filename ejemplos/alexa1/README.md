@@ -8,16 +8,10 @@ Persianas, luces, comandos pc, control arduino...
 <!-- https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb -->
 <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_hide_show -->
 
-<div id="danim" class="col-sm-3">
+
 Animacion:
-<img  id="anim" src="portada.gif" alt="Animacion Control Remoto por Comandos de Voz con Alexa" class="img-responsive img-thumbnail">
-</div><div>
-<br><br><button id="banim" onclick="
-document.getElementById('anim').src='Em50L_ElectronArduinoNodeRed_Ejemplo_Control_con_Comandos_Alexa3.gif';
-document.getElementById('danim').style.width='100%' 
-document.getElementById('banim').style.display='none' ">
-Cargar Animacion alta resolucion (1Mb)
-</button></div><div class='clearfix'></div>
+<img  id="anim" src="Em50L_ElectronArduinoNodeRed_Ejemplo_Control_con_Comandos_Alexa3.gif" alt="Animacion Control Remoto por Comandos de Voz con Alexa" class="img-responsive img-thumbnail">
+
 ______________________________________
 
 # Explicacion paso a paso.
