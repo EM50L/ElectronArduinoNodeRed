@@ -10,8 +10,11 @@ It's permits interact Aruino with another iot elements sutch alexa telegram dash
 
 ### [ Aqui tienes Ejemplos. / Here is a Examples](https://github.com/EM50L/ElectronArduinoNodeRed/ejemplos/)
 
-* [ Osciloscopio ](https://github.com/EM50L/ElectronArduinoNodeRed/blob/master/ejemplos/Osciloscopio_Arduino/README.md)
-![](./Osciloscopio_Arduino/portada.jpg) 
+* [ Osciloscopio ](https://github.com/EM50L/ElectronArduinoNodeRed/blob/master/ejemplos/Osciloscopio_Arduino/README.md)  
+![](./ejemplos/Osciloscopio_Arduino/portada.jpg) 
+
+* [ Control Remoto por Comandos de Voz con Alexa ](https://github.com/EM50L/ElectronArduinoNodeRed/blob/master/ejemplos/alexa1/README.md)  
+![](./ejemplos/alexa1/portada.gif) 
 
 ## Mas Info / More Info 
 http://jejo.es
@@ -91,6 +94,8 @@ epi
  - **Electron First App** https://electronjs.org/docs/tutorial/first-app 
  - **Electron Menus** https://www.christianengvall.se/electron-menu/ 
  
+ 
+## [pagina personal del autor: jejo.es ] (https://jejo.es/categories/node-red/)
 
 ## Ver Tambien / See also
  - **Electron Node-RED Project which this project was inspired from** - https://github.com/natcl/electron-node-red
