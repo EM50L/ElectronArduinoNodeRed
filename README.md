@@ -24,8 +24,8 @@ http://jejo.es
 - Linux Descargar 7z [ElectronArduinoNodeRed V1.0.1 .7z](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/v1.0.1/ElectronArduinoNodeRed-linux-x64-v1.0.1.7z) descomprimir y ejecutar.
 
 ## Install
-- Windows Download Zip [ElectronArduinoNodeRed V1.0 .zip](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/v1.0.1/ElectronArduinoNodeRed-win32-ia32.zip) Unzip it an execute.
-- Linux Download 7z [ElectronArduinoNodeRed V1.0 .7z](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/v1.0.1/ElectronArduinoNodeRed-linux-x64-v1.0.1.7z) extract it an execute.
+- Windows Download Zip [ElectronArduinoNodeRed V1.0.1 .zip](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/v1.0.1/ElectronArduinoNodeRed-win32-ia32.zip) Unzip it an execute.
+- Linux Download 7z [ElectronArduinoNodeRed V1.0.1 .7z](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/v1.0.1/ElectronArduinoNodeRed-linux-x64-v1.0.1.7z) extract it an execute.
 
 ## [Releases / Versiones](https://github.com/EM50L/ElectronArduinoNodeRed/releases/) 
 ## Mirror http://jejo.es
