@@ -1,13 +1,4 @@
----
-title: "Control Remoto por Comandos de Voz con Alexa"
-date: 2019-05-12T18:48:09+02:00
-draft: false
-imagen_portada: "/posts/node-red/flows/alexa1/portada.gif"
-categories: ["programacion","node-red","android"]
-tags: ["node-red","iot","http","aprendizaje","alexa"]
-weight: 1
 
----
 Aqui dejo un flujo para node red.  
 que recoge y procesa comandos de voz de alexa.  
 Ahora solo queda hacer con el comando lo que quieras.  
