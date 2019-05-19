@@ -25,25 +25,24 @@ ______________________________________
 - Todos los equipos visibles en la misma red wifi. (si no alexa no podra comunicarse)
 
 
-### 1) Abrir aplicacion  [ElectronArduinoNodeRed] ({{< ref "ElectronArduinoNodeRed" >}})
-<div class="col-xs-6 col-sm-6">
+### 1) Abrir aplicacion  ElectronArduinoNodeRed
+
 <img src="em50l_alexa1_1a.jpg" alt="imagen de la aplicacion" class="img-responsive img-thumbnail">
-</div><div class='clearfix'></div><hr>
 
 
 ### 2) Arrastrar bloque wemo-emulator al tablero
-<div class="col-xs-6 col-sm-6">
+
 <img src="em50l_alexa1_1.jpg" alt="recuadro configuracion wemo emulator" class="img-responsive img-thumbnail">
-</div><div>
+
 **nota:**  
 Para entrar en la configuracion hay que dar doble click en el bloque.
-</div><div class='clearfix'></div><hr>
+
 
 
 ### 3) Parametrizarlo/configurarlo
-<div class="col-xs-9 col-sm-9">
+
 <img src="em50l_alexa1_2.jpg"  alt="imagen del parametrizado del bloque" class="img-responsive img-thumbnail">
-</div><div>
+
 
 - node name: test
 - Friendly name: test
@@ -57,11 +56,9 @@ Para entrar en la configuracion hay que dar doble click en el bloque.
 </div><div class='clearfix'></div><hr>
 
 ### 4) Deploy / Deteccion
-<div class="col-xs-8 col-sm-8">
-<img src="em50l_alexa1_3.jpg" alt="pantallazo momento deploy" class="img-responsive img-thumbnail">
-</div><div>
 
-</div><div class='clearfix'></div><hr>
+<img src="em50l_alexa1_3.jpg" alt="pantallazo momento deploy" class="img-responsive img-thumbnail">
+
 
 **Nota:** Despues de Configurar e implantar el bloque
 Tendremos que pronunciar `Alexa Buscar dispositivos`  
