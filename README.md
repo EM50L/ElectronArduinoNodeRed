@@ -11,7 +11,7 @@ It's permits interact Aruino with another iot elements sutch alexa telegram dash
 ### [ Aqui tienes Ejemplos. / Here is a Examples](https://github.com/EM50L/ElectronArduinoNodeRed/ejemplos/)
 
 * [ Osciloscopio ](https://github.com/EM50L/ElectronArduinoNodeRed/blob/master/ejemplos/Osciloscopio_Arduino/README.md)
-![](Osciloscopio_Arduino/portada.jpg) 
+![](./Osciloscopio_Arduino/portada.jpg) 
 
 ## Mas Info / More Info 
 http://jejo.es
