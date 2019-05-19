@@ -95,7 +95,7 @@ epi
  - **Electron Menus** https://www.christianengvall.se/electron-menu/ 
  
  
-## [pagina personal del autor: jejo.es ] (https://jejo.es/categories/node-red/)
+## [pagina personal del autor: jejo.es](https://jejo.es/categories/node-red/)
 
 ## Ver Tambien / See also
  - **Electron Node-RED Project which this project was inspired from** - https://github.com/natcl/electron-node-red
