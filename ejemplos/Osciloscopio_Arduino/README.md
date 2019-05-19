@@ -1,13 +1,3 @@
----
-title: "OsciloscopioArduino"
-date: 2019-04-23T18:33:46+02:00
-imagen_portada: "/posts/osciloscopio_arduino/portada.jpg"
-draft: false
-categories: ["Development","arduino","node-red","ElectronJs"]
-tags: ["iot","aprendizaje","electronica"]
-
-weight: 1
----
 
 ### Un osciloscopio con Arduino en solo 3 Nodos y sin programar nada.
 <!--more-->
