@@ -18,13 +18,13 @@
   "author": "Jejo(Em50L)",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^4.1.0",
+    "electron": "^4.2.3",
     "electron-rebuild": "^1.8.4"
   },
   "dependencies": {
     "data-table": "^2.0.0",
     "express": "*",
-    "node-red": "*",
+    "node-red": "next",
     "serialport": "^6.2.1",
     "node-red-contrib-advanced-ping": "^1.2.0",
     "node-red-dashboard": "^2.14.0",
@@ -34,7 +34,6 @@
     "johnny-five": "0.15.0",
     "node-red-contrib-gpio": "0.14.0",
     "node-red-contrib-modbustcp": "1.2.3",
-    "node-red-contrib-alexa-local": "0.3.24",
     "node-red-node-openweathermap": "0.2.1",
     "node-red-contrib-telegrambot": "5.3.0",
     "node-red-contrib-string": "0.2.2",
