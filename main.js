@@ -55,8 +55,27 @@ var settings = {
     httpNodeRoot: "/",
     userDir: userdir,
     flowFile: 'flows.json',
-    functionGlobalContext: { }    // enables global context
+    functionGlobalContext: { bcryptjs:require('bcryptjs'), os:require('os') } // enables global context
 };
+
+var fs = require('fs')
+var pconf = path2.resolve(process.execPath, '../settings.js');
+try{
+	if (fs.existsSync(pconf)){
+		console.log("\nArchivo configuracion encontrado:"+pconf+"\n\n")
+		var config = require(pconf)
+		console.log(config)
+		console.log(config.functionGlobalContext)
+		// de momento solo  adminAuth https://nodered.org/docs/security
+		settings.adminAuth=config.adminAuth
+		settings.credentialSecret=config.credentialSecret
+		settings.editorTheme=config.editorTheme
+		//no funciona: ?????? !!! al parecer una vez compilado si que funciona
+		settings.functionGlobalContext=config.functionGlobalContext ; //https://nodered.org/docs/writing-functions.html#loading-additional-modules
+	}else{
+		console.log("\nArchivo configuracion NO encontrado:\n"+pconf+"\n\n")
+	}
+}catch(err){console.log(err)}
 
 console.log("Inicializa node-red RED.init()");
 RED.init(server,settings);// Inicializa runtime node-red 
@@ -80,9 +99,15 @@ RED.start().then(function() {
 
 // Crea el menu 
 // Codigo https://www.christianengvall.se/electron-menu/)
+function acercade(item,fWin) {
+		const options = {type: 'info',message: " NodeJs      https://nodejs.org/\n ElectronJs  https://electronjs.org/\n Node-Red  https://nodered.org/ \n Jejo EM50L https://jejo.es ",buttons: ["OK"] };
+		dialog.showMessageBox(fWin,options,function(){})
+		}
 
 var template = [{
-	label: "Applicacion",submenu: [{label:'Acerca de...',role:'about'},{type:"separator"},{label:'Salir',role:'quit' }]
+	label: "Applicacion",submenu: [
+		{label:'Acerca de...',click(item,fWin){acercade(item,fWin)} },
+		{type:"separator"},{label:'Salir',role:'quit' }]
     },{
 	label: 'Node-RED',submenu: [
 		{label:'Dashboard',click(){win.loadURL("http://localhost:"+listenPort+"/ui/");}},
