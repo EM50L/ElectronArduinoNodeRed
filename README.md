@@ -29,10 +29,10 @@ Mas info: https://jejo.es/posts/electronarduinonodered/v102/
 http://jejo.es
 
 ## Instalacion 
-- Windows Descargar Zip [Github: ElectronArduinoNodeRed V1.0.2 .zip](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/V1.0.2/ElectronArduinoNodeRed-win32-ia32_v1.0.2.zip) 
-/ [Mirror Personal](https://hard.jejo.pw/jcloud/index.php/s/Z4cQpgzJTTjinzW)(45Mb) (descomprimir y ejecutar.) <!---->
-- Linux Descargar 7z [Github: ElectronArduinoNodeRed V1.0.2 .7z](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/V1.0.2/ElectronArduinoNodeRed-linux-x64_v1.0.2.7z) 
-/ [Mirror Personal](https://hard.jejo.pw/jcloud/index.php/s/fkwtd7djH3AD8YL)(54Mb) (descomprimir y ejecutar.) <!---->
+- Windows Descargar Zip [Github: ElectronArduinoNodeRed-win32-ia32_v1.0.4.7z](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/1.0.4/ElectronArduinoNodeRed-win32-ia32_v1.0.4.7z) 
+(45Mb) (descomprimir y ejecutar.) <!---->
+- Linux Descargar 7z [Github: ElectronArduinoNodeRed-win32-ia32_v1.0.4.7z](https://github.com/EM50L/ElectronArduinoNodeRed/releases/download/1.0.4/ElectronArduinoNodeRed-win32-ia32_v1.0.4.7z) 
+ (descomprimir y ejecutar.) <!---->
 
 
 
